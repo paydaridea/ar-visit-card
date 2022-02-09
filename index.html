@@ -19,7 +19,7 @@
           this.el.addEventListener('targetLost', event => {
             console.log("targetLost");
             document.getElementById("mytarget").setAttribute("visible", "true");
-            document.querySelector("#video").setAttribute("width", document.innerWidth - 10);
+            document.querySelector("#video").setAttribute("width", window.innerWidth - 10);
             document.querySelector("#video").setAttribute("heigh", "auto");
             // document.querySelector("#video").pause();
           });
