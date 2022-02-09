@@ -4,6 +4,24 @@
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
+    <script>
+      AFRAME.registerComponent('mytarget', {
+        init: function () {
+          this.el.addEventListener('targetFound', event => {
+            console.log("targetFound");
+            document.getElementById("mytarget").setAttribute("visible", "true");
+            document.querySelector("#video").setAttribute("src", "https://paydaridea.github.io/ar-visit-card/video.mp4");
+            document.querySelector("#video").play();
+            
+          });
+          this.el.addEventListener('targetLost', event => {
+            console.log("targetLost");
+            document.getElementById("mytarget").setAttribute("visible", "false");
+            document.querySelector("#video").pause();
+          });
+        }
+      });
+    </script>
   </head>
   <body>
     <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
@@ -20,22 +38,19 @@
                       segmentsWidth: 64;
                       segmentsHeight: 64;"
             material="shader: flat; src: #custom-video;"
-            scale="-1 1 1"> -->
+            scale="-1 1 1">
+ 
+width="1.32" height="1" 
+-->
         
-      <a-entity mindar-image-target="targetIndex: 0">
-      <a-video src="https://paydaridea.github.io/ar-visit-card/video.m4v" width="1.32" height="1" position="0 0 0" autoplay webkit-playsinline playsinline></a-video>
+      <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
+        <a-video id="video" position="0 0 0" autoplay playsinline webkit-playsinline></a-video>
 <!--           <a-text value="Hello, World!">Salam</a-text> -->
         <!-- <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
         <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"> -->
       </a-entity>
     </a-scene>
    
-    
-    <script>
-      window.addEventListener('click', function () {
-      var v = document.querySelector('#custom-video');
-      v.play();
-      });
-    </script>
+
   </body>
 </html>
