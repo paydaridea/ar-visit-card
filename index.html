@@ -4,45 +4,22 @@
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
-
     <script>
-    // const target = document.querySelector('#target');
-    // const video = document.querySelector('#video');
-
-    // target.addEventListener("targetFound", event => {
-    //     target.setAttribute("visible", "true");
-    //     video.setAttribute("src", "https://paydaridea.github.io/ar-visit-card/video.mp4");
-    //     video.play();
-    // });
-
-    // target.addEventListener("targetLost", event => {
-    //   alert('targetLost');
-        // target.setAttribute("visible", "true");
-        // video.pause();
-        // video.style.width = `${window.innerWidth - 10}px`;
-        // video.style.width = `auto`;
-      // console.log("target lost");
-      // target.setAttribute("visible", "true");
-      // video.clientWidth = window.innerWidth - 10;
-    // });
-
-    AFRAME.registerComponent('mytarget', {
-      init: function () {
-        this.el.addEventListener('targetFound', event => {
-          console.log("targetFound");
-          document.getElementById("mytarget").setAttribute("visible", "true");
-          document.querySelector("#video").setAttribute("src", "https://paydaridea.github.io/ar-visit-card/video.mp4");
-          document.querySelector("#video").play();
-          
-        });
-        this.el.addEventListener('targetLost', event => {
-          console.log("targetLost");
-          document.getElementById("mytarget").setAttribute("visible", "false");
-          document.querySelector("#video").pause();
-          this.el.object3D.visible = true;
-        });
-      }
-    });
+      AFRAME.registerComponent('mytarget', {
+        init: function () {
+          this.el.addEventListener('targetFound', event => {
+            console.log("targetFound");
+            document.getElementById("mytarget").setAttribute("visible", "true");
+            document.querySelector("#video").setAttribute("src", "https://paydaridea.github.io/ar-visit-card/video.mp4");
+            document.querySelector("#video").play();
+          });
+          this.el.addEventListener('targetLost', event => {
+            console.log("targetLost");
+            document.getElementById("mytarget").setAttribute("visible", "true");
+            document.querySelector("#video").pause();
+          });
+        }
+      });
     </script>
   </head>
   <body>
