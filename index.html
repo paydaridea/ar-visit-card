@@ -15,7 +15,7 @@
           });
           this.el.addEventListener('targetLost', event => {
             console.log("targetLost");
-            document.getElementById("mytarget").setAttribute("visible", "false");
+            document.getElementById("mytarget").setAttribute("visible", "true");
             let video = document.querySelector("#video");
             video.pause();
             document.querySelector("#video").style.width = `${window.innerWidth - 10}px !important`;
