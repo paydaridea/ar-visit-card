@@ -6,31 +6,44 @@
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
 
     <script>
-      AFRAME.registerComponent('mytarget', {
-        init: function () {
-          this.el.addEventListener('targetFound', event => {
-            console.log("targetFound");
-            document.getElementById("mytarget").setAttribute("visible", "true");
-            document.querySelector("#video").setAttribute("src", "https://paydaridea.github.io/ar-visit-card/video.mp4");
-            document.querySelector("#video").play();
+    const target = document.querySelector('#target');
+    const video = document.querySelector('#video');
+
+    target.addEventListener("targetFound", event => {
+        target.setAttribute("visible", "true");
+        video.setAttribute("src", "https://paydaridea.github.io/ar-visit-card/video.mp4");
+        video.play();
+    });
+
+    target.addEventListener("targetLost", event => {
+      console.log("target lost");
+      target.setAttribute("visible", "true");
+      video.clientWidth = window.innerWidth - 10;
+    });
+
+      // AFRAME.registerComponent('mytarget', {
+      //   init: function () {
+      //     this.el.addEventListener('targetFound', event => {
+      //       console.log("targetFound");
+      //       document.getElementById("mytarget").setAttribute("visible", "true");
+      //       document.querySelector("#video").setAttribute("src", "https://paydaridea.github.io/ar-visit-card/video.mp4");
+      //       document.querySelector("#video").play();
             
-          });
-          this.el.addEventListener('targetLost', event => {
-            console.log("targetLost");
-            document.getElementById("mytarget").setAttribute("visible", "false");
-            document.querySelector("#video").pause();
-            // document.querySelector("#video").setAttribute("width", window.innerWidth - 10);
-            // document.querySelector("#video").setAttribute("height", "auto");
-          });
-        }
-      });
+      //     });
+      //     this.el.addEventListener('targetLost', event => {
+      //       console.log("targetLost");
+      //       document.getElementById("mytarget").setAttribute("visible", "true");
+      //       document.querySelector("#video").pause();
+      //     });
+      //   }
+      // });
     </script>
   </head>
   <body>
     <a-scene mindar-image="imageTargetSrc: https://paydaridea.github.io/ar-visit-card/target.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets></a-assets>
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-      <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
+      <a-entity id="target" target mindar-image-target="targetIndex: 0">
         <a-video id="video" height=".6" width=".9" position="0 0 0" autoplay playsinline webkit-playsinline></a-video>
       </a-entity>
     </a-scene>
