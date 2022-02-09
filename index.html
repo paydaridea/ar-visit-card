@@ -16,8 +16,8 @@
           this.el.addEventListener('targetLost', event => {
             console.log("targetLost");
             document.getElementById("mytarget").setAttribute("visible", "true");
-            let video = document.querySelector("#video");
-            video.pause();
+            // let video = document.querySelector("#video");
+            // video.pause();
             document.querySelector("#video").style.width = `${window.innerWidth - 10}px !important`;
             document.querySelector("#video").style.height = `auto !important`;
             setInterval(() => this.el.object3D.visible = true, 500);
