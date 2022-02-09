@@ -16,7 +16,15 @@
           this.el.addEventListener('targetLost', event => {
             console.log("targetLost");
             document.getElementById("mytarget").setAttribute("visible", "false");
-            document.querySelector("#video").pause();
+            let video = document.querySelector("#video");
+            video.pause();
+            if (video.requestFullscreen) {
+              video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) { /* Safari */
+              video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { /* IE11 */
+              video.msRequestFullscreen();
+            }
             document.querySelector("#video").style.width = `${window.innerWidth - 10}px`;
             document.querySelector("#video").style.height = `auto`;
             setInterval(() => this.el.object3D.visible = true, 500);
@@ -25,14 +33,14 @@
       });
     </script>
     <style>
-      #video {
+      /* #video { */
         /* display: fixed; */
-        position: fixed;
+        /* position: fixed;
         width: 100%;
         height: auto;
         top: 40%;
-        margin-top: -100px;
-      }
+        margin-top: -100px; */
+      /* } */
     </style>
   </head>
   <body>
