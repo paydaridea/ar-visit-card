@@ -19,11 +19,17 @@
             document.querySelector("#video").pause();
             document.querySelector("#video").style.width = `${window.innerWidth - 10}px`;
             document.querySelector("#video").style.height = `auto`;
-            setInterval(() => this.el.object3D.visible = true, 1000);
+            setInterval(() => this.el.object3D.visible = true, 500);
           });
         }
       });
     </script>
+    <style>
+      #video {
+        width: 100%;
+        height: auto;
+      }
+    </style>
   </head>
   <body>
     <a-scene mindar-image="imageTargetSrc: https://paydaridea.github.io/ar-visit-card/target.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
