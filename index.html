@@ -18,9 +18,9 @@
           this.el.addEventListener('targetLost', event => {
             console.log("targetLost");
             document.getElementById("mytarget").setAttribute("visible", "false");
-            document.querySelector("#video").setAttribute("width", window.innerWidth - 10);
-            document.querySelector("#video").setAttribute("height", "auto");
-            // document.querySelector("#video").pause();
+            document.querySelector("#video").pause();
+            // document.querySelector("#video").setAttribute("width", window.innerWidth - 10);
+            // document.querySelector("#video").setAttribute("height", "auto");
           });
         }
       });
