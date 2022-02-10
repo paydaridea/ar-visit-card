@@ -4,6 +4,7 @@
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/dist/mindar-image-aframe.prod.js"></script>
+
     <script>
       AFRAME.registerComponent('mytarget', {
         init: function () {
@@ -16,41 +17,22 @@
           });
           this.el.addEventListener('targetLost', event => {
             console.log("targetLost");
-            document.getElementById("mytarget").setAttribute("visible", "false");
+            document.getElementById("mytarget").setAttribute("visible", "true");
             document.querySelector("#video").pause();
+            // document.querySelector("#video").style.width = `${window.innerWidth - 10}px`;
+            // document.querySelector("#video").style.width = `auto`;
           });
         }
       });
     </script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
-<!--         <video id="custom-video"  loop="true" src=""></video> -->
-<!--         <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/card.png" />
-        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item> -->
-    </a-assets>
-
+    <a-scene mindar-image="imageTargetSrc: https://paydaridea.github.io/ar-visit-card/target.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets></a-assets>
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-<!--       <a-entity mindar-image-target="targetIndex: 0" geometry="primitive: sphere;
-                      radius: 5000;
-                      segmentsWidth: 64;
-                      segmentsHeight: 64;"
-            material="shader: flat; src: #custom-video;"
-            scale="-1 1 1">
- 
-width="1.32" height="1" 
--->
-        
       <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
-        <a-video id="video" position="0 0 0" autoplay playsinline webkit-playsinline></a-video>
-<!--           <a-text value="Hello, World!">Salam</a-text> -->
-        <!-- <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"> -->
+        <a-video id="video" height=".6" width=".9" position="0 0 0" autoplay playsinline webkit-playsinline></a-video>
       </a-entity>
     </a-scene>
-   
-
   </body>
 </html>
