@@ -16,29 +16,23 @@
           this.el.addEventListener('targetLost', event => {
             console.log("targetLost");
             document.getElementById("mytarget").setAttribute("visible", "true");
-            // let video = document.querySelector("#video");
-            // video.pause();
-            document.querySelector("#video").width = '1';
-            document.querySelector("#video").height = '.66';
+            let video = document.querySelector("#video");
+            video.width = '1';
+            video.height = '.66';
             setInterval(() => this.el.object3D.visible = true, 500);
-            const video = document.querySelector("a-video");
-            const height = video.getAttribute("geometry").height;
-            const fov = this.el.sceneEl.camera.fov * (Math.PI / 180);
-            const newDistance = Math.abs((height / 2) / Math.tan(fov / 2));
-            video.object3D.position.z = -1 * newDistance;
           });
         }
       });
 
-      AFRAME.registerComponent('fit', {
-        init: function () {
-          const video = document.querySelector("a-video")
-          const height = video.getAttribute("geometry").height
-          const fov = this.el.sceneEl.camera.fov * (Math.PI / 180);
-          const newDistance = Math.abs((height / 2) / Math.tan(fov / 2))
-          video.object3D.position.z = -1 * newDistance
-        }
-      });
+      // AFRAME.registerComponent('fit', {
+      //   init: function () {
+      //     const video = document.querySelector("a-video")
+      //     const height = video.getAttribute("geometry").height
+      //     const fov = this.el.sceneEl.camera.fov * (Math.PI / 180);
+      //     const newDistance = Math.abs((height / 2) / Math.tan(fov / 2))
+      //     video.object3D.position.z = -1 * newDistance
+      //   }
+      // });
     </script>
     <style>
       /* #video { */
@@ -54,7 +48,7 @@
   <body>
     <a-scene mindar-image="imageTargetSrc: https://paydaridea.github.io/ar-visit-card/target.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: true">
       <a-assets></a-assets>
-      <a-camera position="0 0 0" look-controls="enabled: false" fit></a-camera>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
         <a-video id="video" height=".6" width=".9" position="0 0 0" autoplay controls playsinline webkit-playsinline></a-video>
       </a-entity>
