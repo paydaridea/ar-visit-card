@@ -11,11 +11,9 @@
       init: function () {
         this.el.addEventListener('targetFound', event => {
           console.log("targetFound");
+          document.getElementById("mytarget").setAttribute("visible", "true");
           document.querySelector("#video").setAttribute("src", "https://paydaridea.github.io/ar-visit-card/video.mp4");
           document.querySelector("#video").play();
-          setTimeout(() => {
-            document.getElementById("mytarget").setAttribute("visible", "true");
-          }, 500);
         });
         this.el.addEventListener('targetLost', event => {
           console.log("targetLost");
