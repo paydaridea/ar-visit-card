@@ -36,24 +36,25 @@
       webButton.addEventListener('click', function (evt) {
         // text.setAttribute("value", "https://softmind.tech");
         currentTab = 'web';
-        swal("WEB");
+        window.open("https://ayabs.com", "_blank");
       });
       emailButton.addEventListener('click', function (evt) {
         // text.setAttribute("value", "hello@softmind.tech");
         currentTab = 'email';
-        alert('EMAIL');
+        window.open("mailto:info@ayabs.com", "_blank");
       });
       profileButton.addEventListener('click', function (evt) {
         // text.setAttribute("value", "AR, VR solutions and consultation");
         currentTab = 'profile';
         // alert('PROFILE');
-        window.open("tel:+1800229933");
+        window.open("tel:+2126407570", "_blank");
       });
       locationButton.addEventListener('click', function (evt) {
         console.log("loc");
         // text.setAttribute("value", "Vancouver, Canada | Hong Kong");
         currentTab = 'location';
-        alert('LOCATION');
+        // swal('Iran, Tehran\nBlvd Mirdamad\nRoodbar gharbi street\nKamal deadend\nNo 3');
+        window.open('https://goo.gl/maps/n415FP1Xp9Psj85F7', '_blank');
       });
 
       // text.addEventListener('click', function (evt) {
@@ -95,7 +96,7 @@
           });
 
           paintandquestPreviewButton.addEventListener('click', () => {
-            paintandquestPreviewButton.setAttribute("visible", false);
+            // paintandquestPreviewButton.setAttribute("visible", false);
             const testVideo = document.createElement("video");
             const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
             // if (canplayWebm == "") {
@@ -125,7 +126,7 @@
       let z = -0.3;
       const id = setInterval(() => {
         z += 0.008;
-        if (z >= 0.3) {
+        if (z >= 0.001) {
           clearInterval(id);
           onDone();
         }

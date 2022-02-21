@@ -1,11 +1,9 @@
-Icons
-Gallery Images
-Preview
-Alert
-Opens Icons Address
-Card Size
-Test Iphone
-Load Time
-Gallery
-Full Screen
-Ali Abay Ideas
+[x] Icons
+[x] Gallery, Images
+[x] Preview
+[x] Card Size
+[x] Load Time
+[x] Test iPhone
+[x] Full Screen
+[x] Alert, Opens Icons Address
+Push, VPN, TEST, EIDT, Ali Abay Ideas 
